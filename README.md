@@ -21,3 +21,6 @@ The following script, when used through an [[input:exec]] block will provide Sto
   name_suffix = "_storj"
 ```
 
+## Screenshot
+
+![Image of Grafna Dashboard](https://github.com/salgieri/StorJ-Telegraf-Plugin/images/screenshot.png)
