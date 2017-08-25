@@ -2,21 +2,28 @@
 
 'use strict';
 
+var microtime = require('microtime');
 const dnode = require('dnode');
-const host = process.env.COLLECTD_HOSTNAME || 'storj.node';
+// const host = process.env.COLLECTD_HOSTNAME || 'storj.node';
+const host = 'zfs-store';
 const interval = process.env.COLLECTD_INTERVAL || 120;
 const storjDaemonPort = 45015;
+var timestamp = microtime.now();
+
 
 const outputCollectdData = (share) => {
+
     const totalPeers = share.meta.farmerState.totalPeers || 0;
     const numRestarts = share.meta.numRestarts || 0;
     const spaceUsedBytes = share.meta.farmerState.spaceUsedBytes || 0;
     const contractCount = share.meta.farmerState.contractCount || 0;
     const delta = fixDeltaValue(share);
     const percentUsed = share.meta.farmerState.percentUsed || 0;
+    // console.log(share.id, numRestarts);
 
-    // console.log(`PUTVAL ${host}/storj/peers-${share.id} interval=${interval} N:${totalPeers}`);
-    console.log(`storj, host=${host}, shareid=${share.id} peers=${totalPeers} restarts=${numRestarts} shared=${spaceUsedBytes} contracts=${contractCount} delta=${delta} used_percentage=${percentUsed}`);
+
+
+    console.log(`storj,host=${host},shareid=${share.id} peers=${totalPeers},restarts=${numRestarts},shared=${spaceUsedBytes},contracts=${contractCount},delta=${delta},used_percentage=${percentUsed}`);
     /* console.log(`PUTVAL ${host}/storj/restarts-${share.id} interval=${interval} N:${numRestarts}`);
      console.log(`PUTVAL ${host}/storj/shared-${share.id} interval=${interval} N:${spaceUsedBytes}`);
      console.log(`PUTVAL ${host}/storj/contracts-${share.id} interval=${interval} N:${contractCount}`);
@@ -54,4 +61,3 @@ const status = () => {
 };
 
 status();
-setInterval(status, interval * 1000);

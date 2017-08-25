@@ -10,6 +10,7 @@
     "collectd-storj-exec-plugin": "./index.js"
   },
   "dependencies": {
-    "dnode": "^1.2.2"
+    "dnode": "^1.2.2",
+    "microtime": "wadey/node-microtime"
   }
 }
