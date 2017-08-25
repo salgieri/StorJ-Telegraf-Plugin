@@ -2,6 +2,24 @@
 
 The following script, when used through an [[input:exec]] block will provide StorJ information to the relevant storage location
 
+## Install
+
+Clone the repository locally.
+
+	npm install
+
+You can run the script directly to confirm that the results are being generated directly. When you run you should see something similar to
+
+```bash
+./storjstats.js
+
+storj,host=<your_host_name>,shareid=<share_id_1> peers=188,restarts=0,shared=190084937031,contracts=82855,delta=8,used_percentage=2
+storj,host=<your_host_name>,shareid=<share_id_2> peers=174,restarts=0,shared=248917529152,contracts=47173,delta=11,used_percentage=3
+storj,host=<your_host_name>,shareid=<share_id_3> peers=160,restarts=0,shared=124914324005,contracts=36168,delta=3,used_percentage=1
+```
+You see one line for each node you're running on the local machine.
+
+
 ## Config Example
 
 ```toml
