@@ -2,6 +2,8 @@
 
 The following script, when used through an [[input:exec]] block will provide StorJ information to the relevant storage location
 
+Based on the awesome CollectD script by Olivier : [storj-collectd-plugin](https://github.com/bobey/storj-collectd-plugin)
+
 ## Install
 
 Clone the repository locally.
