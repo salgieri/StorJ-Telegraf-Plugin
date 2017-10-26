@@ -24,11 +24,12 @@ const outputCollectdData = (share) => {
 
 const fixDeltaValue = (share) => {
     let delta = share.meta.farmerState.ntpStatus.delta;
+    delta = delta.replace('ms','');
     if (isNaN(delta)) {
         return 0;
     }
 
-    var newDelta = parseInt(delta.replace('ms', ''), 10);
+    var newDelta = parseInt(delta, 10);
     return newDelta;
 };
 
